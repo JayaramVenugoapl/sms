@@ -84,5 +84,3 @@ test:
 production:
   <<: *default
   database: amt_assignment
-  username: sms
-  password: <%= ENV['SMS_DATABASE_PASSWORD'] %>
