@@ -1,4 +1,4 @@
-# Twikker
+# SMS
 
 Create a SMS Gatway application
 
