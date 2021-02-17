@@ -15,15 +15,20 @@ ActiveRecord::Schema.define(version: 2021_02_15_133833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", id: :integer, default: -> { "nextval('account_id_seq'::regclass)" }, force: :cascade do |t|
-    t.string "auth_id", limit: 40
-    t.string "username", limit: 30
+  create_table "accounts", force: :cascade do |t|
+    t.integer "auth_id"
+    t.string "username"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "phone_numbers", id: :integer, default: -> { "nextval('phone_number_id_seq'::regclass)" }, force: :cascade do |t|
-    t.string "number", limit: 40
-    t.integer "account_id"
+  create_table "phone_numbers", force: :cascade do |t|
+    t.bigint "number"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_phone_numbers_on_account_id"
   end
 
-  add_foreign_key "phone_numbers", "accounts", name: "phone_number_account_id_fkey"
+  add_foreign_key "phone_numbers", "accounts"
 end

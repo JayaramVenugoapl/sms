@@ -1,7 +1,7 @@
 module Error
   class UnauthorizedError < CustomError
     def initialize
-      super(:unauthorized_request, 401, 'Invalid credentials')
+      super("Invalid credentials", 403)
     end
   end
 end

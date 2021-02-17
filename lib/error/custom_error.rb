@@ -3,13 +3,12 @@ module Error
     attr_reader :status, :error, :message
 
     def initialize(_error = nil, _status = nil, _message = nil)
-      @error = _error || 422
+      @error = _error || "unknown failure"
       @status = _status || :unprocessable_entity
-      @message = _message || 'Something went wrong'
+      @message = _message || ''
     end
 
     def fetch_json
-      p "fetch_json"
       Helpers::Render.json(error, message, status)
     end
   end

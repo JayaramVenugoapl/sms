@@ -24,7 +24,8 @@ Rails.application.configure do
   # else
     
   config.action_controller.perform_caching = true
-  config.cache_store = :dalli_store, 'localhost', { :namespace => 'amtsms' }
+  config.active_record.cache_versioning = false
+  config.cache_store = :mem_cache_store
     
   # end
 
